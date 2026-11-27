@@ -50,7 +50,7 @@ export function initModels(sequelize: Sequelize) {
       passwordHash: { type: DataTypes.STRING(100), allowNull: false },
       ...timestamps,
     },
-    { sequelize, tableName: "users" },
+    { sequelize, modelName: "User", tableName: "users" },
   );
 
   Project.init(
@@ -60,7 +60,7 @@ export function initModels(sequelize: Sequelize) {
       description: { type: DataTypes.TEXT, allowNull: true },
       ...timestamps,
     },
-    { sequelize, tableName: "projects" },
+    { sequelize, modelName: "Project", tableName: "projects" },
   );
 
   Task.init(
@@ -75,6 +75,7 @@ export function initModels(sequelize: Sequelize) {
     },
     {
       sequelize,
+      modelName: "Task",
       tableName: "tasks",
       indexes: [{ fields: ["projectId", "status"] }, { fields: ["projectId", "dueDate"] }],
     },
